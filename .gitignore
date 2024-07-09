@@ -3,3 +3,4 @@ static/*
 .idea
 *.xlsx
 .env
+__pycache__
