@@ -8,8 +8,8 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.common.exceptions import NoSuchElementException, TimeoutException, ElementClickInterceptedException
-
 import utils
+from config import settings
 
 
 class ZeroSSLService:
@@ -105,7 +105,7 @@ class ZeroSSLService:
         self.click_element(By.CSS_SELECTOR, ".login > a")
         self.click_element(By.LINK_TEXT, "Get started for free")
         self.send_keys_element(By.NAME, "signup[email]", random_email)
-        self.send_keys_element(By.NAME, "signup[password]", "Password123!")
+        self.send_keys_element(By.NAME, "signup[password]", settings.PASSWORD)
         self.click_element(By.CSS_SELECTOR, ".button")
         self.click_element(By.LINK_TEXT, "New Certificate")
         self.send_keys_element(By.NAME, "wizard[order][domains][domain]", domain)
