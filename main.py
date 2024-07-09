@@ -11,7 +11,7 @@ app = FastAPI()
 app.mount(path="/static", app=StaticFiles(directory="static"), name="static")
 
 account_service = AccountService()
-url = "http://localhost:8000" if utils.is_dev() else "https://api.quelenis.com/zerossl/get_cert"
+url = "http://localhost:8000" if utils.is_dev() else "https://api.enzoquelenis.fr/zerossl/get_cert"
 
 
 class GetCert(BaseModel):
