@@ -1,0 +1,26 @@
+services:
+  app:
+    build: .
+    image: zerossl-selenium-app:latest
+    container_name: zerossl-selenium-app
+    volumes:
+      - ./app:/app
+    restart: always
+    depends_on:
+      - chrome
+    networks:
+      - network
+
+  chrome:
+    image: selenium/standalone-chrome:latest
+    container_name: zerossl-selenium-chrome
+    environment:
+      SE_NODE_SESSION_TIMEOUT: 20
+    restart: always
+    networks:
+      - network
+
+networks:
+  - network:
+      name: zerossl-selenium
+      external: true
