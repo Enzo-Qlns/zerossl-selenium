@@ -24,8 +24,8 @@ async def root() -> dict:
     return {"message": "Hello World"}
 
 
-@app.get("/get_cert")
-async def get_cert(payload: GetCert = list) -> JSONResponse:
+@app.post("/get_cert")
+async def get_cert(payload: GetCert) -> JSONResponse:
     try:
         random_email = account_service.generate_random_email()
 
@@ -37,9 +37,10 @@ async def get_cert(payload: GetCert = list) -> JSONResponse:
             status_code=status.HTTP_200_OK,
             content={
                 "message": "Le certificat a été récupéré avec succès.",
-                "url": f"{url}/static/{zerossl_service.get_path_image()}"
+                "url": zerossl_service.get_path_image()
             }
         )
+
     except Exception as e:
         print(e)
         raise HTTPException(

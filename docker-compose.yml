@@ -4,7 +4,7 @@ services:
     image: zerossl-selenium-app:latest
     container_name: zerossl-selenium-app
     volumes:
-      - ./app:/app
+      - ./:/app
     restart: always
     depends_on:
       - chrome

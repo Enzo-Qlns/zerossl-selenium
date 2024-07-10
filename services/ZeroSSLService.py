@@ -143,11 +143,11 @@ class ZeroSSLService:
         download_dir = os.path.abspath("static")
         for filename in os.listdir(download_dir):
             if filename.endswith(".zip"):
-                unique_filename = f"{uuid.uuid4()}.zip"
+                unique_filename = f"{domain}-{uuid.uuid4()}.zip"
                 source = os.path.join(download_dir, filename)
                 destination = os.path.join(download_dir, unique_filename)
                 shutil.move(source, destination)
-                self._path_image = destination
+                self._path_image = utils.get_api_url() + '/static/' + unique_filename
                 # Add certificate details to Excel
                 self.add_to_excel(unique_filename, domain)
 
